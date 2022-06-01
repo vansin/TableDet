@@ -19,7 +19,7 @@ model = dict(
         use_dcn=True),
     bbox_head=dict(
         type='CenterNetHead',
-        num_classes=80,
+        num_classes=1,
         in_channel=64,
         feat_channel=64,
         loss_center_heatmap=dict(type='GaussianFocalLoss', loss_weight=1.0),
@@ -85,8 +85,8 @@ test_pipeline = [
         ])
 ]
 
-dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+dataset_type = 'TableDataset'
+data_root = 'data/icdar2019_tracka_modern/'
 
 # Use RepeatDataset to speed up training
 data = dict(

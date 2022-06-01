@@ -23,7 +23,7 @@ model = dict(
     bbox_head=dict(
         type='SSDHead',
         in_channels=(96, 1280, 512, 256, 256, 128),
-        num_classes=80,
+        num_classes=1,
         use_depthwise=True,
         norm_cfg=dict(type='BN', eps=0.001, momentum=0.03),
         act_cfg=dict(type='ReLU6'),
@@ -65,8 +65,8 @@ model = dict(
 cudnn_benchmark = True
 
 # dataset settings
-dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+dataset_type = 'TableDataset'
+data_root = 'data/icdar2019_tracka_modern/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [

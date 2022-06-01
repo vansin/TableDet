@@ -27,7 +27,7 @@ model = dict(
         conv_cfg=dict(type='DCNv2', deform_groups=2)),
     bbox_head=dict(
         type='NASFCOSHead',
-        num_classes=80,
+        num_classes=1,
         in_channels=256,
         feat_channels=256,
         strides=[8, 16, 32, 64, 128],

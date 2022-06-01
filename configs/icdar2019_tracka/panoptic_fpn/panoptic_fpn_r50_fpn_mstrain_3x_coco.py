@@ -2,7 +2,7 @@ _base_ = './panoptic_fpn_r50_fpn_1x_coco.py'
 
 # dataset settings
 dataset_type = 'CocoPanopticDataset'
-data_root = 'data/coco/'
+data_root = 'data/icdar2019_tracka_modern/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 

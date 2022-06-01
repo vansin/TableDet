@@ -25,7 +25,7 @@ model = dict(
         upsample_cfg=dict(mode='bilinear')),
     bbox_head=dict(
         type='YOLACTHead',
-        num_classes=80,
+        num_classes=1,
         in_channels=256,
         feat_channels=256,
         anchor_generator=dict(
@@ -54,12 +54,12 @@ model = dict(
         type='YOLACTProtonet',
         in_channels=256,
         num_protos=32,
-        num_classes=80,
+        num_classes=1,
         max_masks_to_train=100,
         loss_mask_weight=6.125),
     segm_head=dict(
         type='YOLACTSegmHead',
-        num_classes=80,
+        num_classes=1,
         in_channels=256,
         loss_segm=dict(
             type='CrossEntropyLoss', use_sigmoid=True, loss_weight=1.0)),
@@ -85,8 +85,8 @@ model = dict(
         top_k=200,
         max_per_img=100))
 # dataset settings
-dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+dataset_type = 'TableDataset'
+data_root = 'data/icdar2019_tracka_modern/'
 img_norm_cfg = dict(
     mean=[123.68, 116.78, 103.94], std=[58.40, 57.12, 57.38], to_rgb=True)
 train_pipeline = [

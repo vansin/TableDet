@@ -40,7 +40,7 @@ model = dict(
         bbox_head=[
             dict(
                 type='DIIHead',
-                num_classes=80,
+                num_classes=1,
                 num_ffn_fcs=2,
                 num_heads=8,
                 num_cls_fcs=1,
