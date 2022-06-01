@@ -2,9 +2,23 @@ checkpoint_config = dict(interval=1)
 # yapf:disable
 log_config = dict(
     interval=50,
+    # hooks=[
+    #     dict(type='TextLoggerHook'),
+    #     # dict(type='TensorboardLoggerHook')
+    # ])
     hooks=[
         dict(type='TextLoggerHook'),
-        # dict(type='TensorboardLoggerHook')
+        # dict(type='TensorboardLoggerHook'),
+        # dict(
+        #     type='WandbLoggerHook',
+        #     init_kwargs=dict(
+        #         project='mmdet',
+        #         name='suep')) 
+        dict(
+            type='WandbLoggerHook'),
+        # dict(type='NeptuneLoggerHook') 
+        # dict(type='NeptuneLoggerHook', init_kwargs=dict(project='vansin/tabledet')) 
+
     ])
 # yapf:enable
 custom_hooks = [dict(type='NumClassCheckHook')]

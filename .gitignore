@@ -125,3 +125,5 @@ work_dirs/
 
 work_dirs
 work_dirs_no_pth
+wandb
+.neptune

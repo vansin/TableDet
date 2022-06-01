@@ -394,6 +394,24 @@ class TableDataset(CustomDataset):
                     logger=logger)
                 mean_aps.append(mean_ap)
                 # custom detail              
+                recalls = eval_detail[0]['recall']
+                precisions = eval_detail[0]['precision']
+                f1_scores = (2*recalls*precisions)/(recalls+precisions)
+                f1_scores[np.isnan(f1_scores)] = 0
+                if eval_detail[0]['num_dets']==0:
+                    recall_in_max_f1_score = 0
+                    precision_in_max_f1_score = 0
+                    max_f1_score = 0
+                else:
+                    max_index = np.argmax(f1_scores)
+                    recall_in_max_f1_score = recalls[max_index]
+                    precision_in_max_f1_score = precisions[max_index]
+                    max_f1_score = f1_scores[max_index]
+                eval_results[f'MaxF1Score{int(iou_thr * 100):02d}'] = round(max_f1_score, 3)
+                eval_results[f'MaxRecallF{int(iou_thr * 100):02d}'] = round(recall_in_max_f1_score, 3)
+                eval_results[f'MaxprecisionF{int(iou_thr * 100):02d}'] = round(precision_in_max_f1_score, 3)
+
+
                 eval_detail_result = dict()
 
                 eval_detail_result['detail'] = eval_detail
@@ -412,8 +430,8 @@ class TableDataset(CustomDataset):
                     eval_detail_result['recall'] = 0
                     eval_detail_result['precision'] = 0
                     eval_detail_result['f1_score'] = 0
-
                 eval_detail_results[iou_thr] = eval_detail_result
+
                 eval_results[f'AP{int(iou_thr * 100):02d}'] = round(mean_ap, 3)
 
             eval_results['mAP'] = sum(mean_aps) / len(mean_aps)
@@ -428,7 +446,10 @@ class TableDataset(CustomDataset):
                 ar = recalls.mean(axis=1)
                 for i, num in enumerate(proposal_nums):
                     eval_results[f'AR@{num}'] = ar[i]
-        return eval_results, eval_detail_results
+
+        # eval_results.update(eval_detail_results)
+        return eval_results
+        # return eval_results, eval_detail_results
     # def evaluate(self,
     #              results,
     #              metric='bbox',

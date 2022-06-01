@@ -48,4 +48,4 @@ data = dict(
         pipeline=test_pipeline))
 
 # evaluation = dict(metric=['bbox', 'segm'])
-evaluation = dict(interval=1000, metric='mAP')
+evaluation = dict(interval=1, metric='mAP')
