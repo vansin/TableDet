@@ -28,3 +28,5 @@ model = dict(
         out_channels=256,
         num_outs=5)
     )
+
+optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
