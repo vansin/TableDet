@@ -184,7 +184,7 @@ def add_mim_extension():
 
 
 if __name__ == '__main__':
-    add_mim_extension()
+    # add_mim_extension()
     setup(
         name='TableDet',
         version=get_version(),
@@ -195,7 +195,7 @@ if __name__ == '__main__':
         author_email='openmmlab@gmail.com',
         keywords='computer vision, object detection',
         url='https://github.com/open-mmlab/mmdetection',
-        packages=find_packages(exclude=('configs', 'tools', 'demo')),
+        packages=find_packages(exclude=('configs', 'tools', 'demo', 'mmdetection')),
         include_package_data=True,
         classifiers=[
             'Development Status :: 5 - Production/Stable',
