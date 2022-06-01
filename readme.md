@@ -39,3 +39,9 @@ conda install pytorch==1.10.0 torchvision==0.11.0 torchaudio==0.10.0 cudatoolkit
 pip install -r mmdetection/requirements/build.txt
 pip install -v -e mmdetection
 ```
+
+## install the tabledet
+
+```shell
+pip install -v -e .
+```
