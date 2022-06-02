@@ -55,8 +55,8 @@ test_pipeline = [
             dict(type='Collect', keys=['img']),
         ])
 ]
-dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+dataset_type = 'TableDataset'
+data_root = 'data/icdar2019_tracka_modern/'
 data = dict(
     _delete_=True,
     samples_per_gpu=2,

@@ -14,7 +14,7 @@ Modern approaches typically formulate semantic segmentation as a per-pixel class
 
 ## Introduction
 
-MaskFormer requires COCO and [COCO-panoptic](http://images.cocodataset.org/annotations/panoptic_annotations_trainval2017.zip) dataset for training and evaluation. You need to download and extract it in the COCO dataset path.
+MaskFormer requires COCO and [COCO-panoptic](http://images.TableDataset.org/annotations/panoptic_annotations_trainval2017.zip) dataset for training and evaluation. You need to download and extract it in the COCO dataset path.
 The directory should be like this.
 
 ```none

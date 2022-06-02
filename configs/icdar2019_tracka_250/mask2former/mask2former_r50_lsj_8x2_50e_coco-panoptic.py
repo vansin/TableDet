@@ -186,7 +186,7 @@ test_pipeline = [
             dict(type='Collect', keys=['img']),
         ])
 ]
-data_root = 'data/coco/'
+data_root = 'data/icdar2019_tracka_modern/'
 data = dict(
     samples_per_gpu=2,
     workers_per_gpu=2,

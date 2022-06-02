@@ -16,8 +16,8 @@ model = dict(
             strides=[8, 16, 32, 64, 128, 256, 512],
             ratios=[[2], [2, 3], [2, 3], [2, 3], [2, 3], [2], [2]])))
 # dataset settings
-dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+dataset_type = 'TableDataset'
+data_root = 'data/icdar2019_tracka_modern/'
 img_norm_cfg = dict(mean=[123.675, 116.28, 103.53], std=[1, 1, 1], to_rgb=True)
 train_pipeline = [
     dict(type='LoadImageFromFile'),

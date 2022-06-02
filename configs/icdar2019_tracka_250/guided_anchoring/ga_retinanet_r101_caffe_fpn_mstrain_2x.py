@@ -24,7 +24,7 @@ model = dict(
         num_outs=5),
     bbox_head=dict(
         type='GARetinaHead',
-        num_classes=80,
+        num_classes=1,
         in_channels=256,
         stacked_convs=4,
         feat_channels=256,
@@ -94,8 +94,8 @@ test_cfg = dict(
     nms=dict(type='nms', iou_threshold=0.5),
     max_per_img=100)
 # dataset settings
-dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+dataset_type = 'TableDataset'
+data_root = 'data/icdar2019_tracka_modern/'
 img_norm_cfg = dict(
     mean=[103.530, 116.280, 123.675], std=[1.0, 1.0, 1.0], to_rgb=False)
 train_pipeline = [

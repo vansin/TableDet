@@ -26,7 +26,7 @@ model = dict(
     ],
     bbox_head=dict(
         type='ATSSHead',
-        num_classes=80,
+        num_classes=1,
         in_channels=256,
         stacked_convs=0,
         feat_channels=256,

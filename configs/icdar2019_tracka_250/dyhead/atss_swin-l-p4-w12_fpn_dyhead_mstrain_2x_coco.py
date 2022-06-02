@@ -41,7 +41,7 @@ model = dict(
     ],
     bbox_head=dict(
         type='ATSSHead',
-        num_classes=80,
+        num_classes=1,
         in_channels=256,
         pred_kernel_size=1,  # follow DyHead official implementation
         stacked_convs=0,
@@ -80,8 +80,8 @@ model = dict(
         max_per_img=100))
 
 # dataset settings
-dataset_type = 'CocoDataset'
-data_root = 'data/coco/'
+dataset_type = 'TableDataset'
+data_root = 'data/icdar2019_tracka_modern/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 
