@@ -21,7 +21,11 @@ model = dict(
         init_cfg=dict(
             type='Pretrained', checkpoint=checkpoint_file,
             prefix='backbone.')),
-    neck=dict(in_channels=[96, 192, 384, 768]),
+    neck=dict(
+        type='PAFPN',
+        in_channels=[96, 192, 384, 768],
+        out_channels=256,
+        num_outs=5),
     roi_head=dict(bbox_head=[
         dict(
             type='ConvFCBBoxHead',
@@ -41,7 +45,7 @@ model = dict(
             norm_cfg=dict(type='BN', requires_grad=True),
             loss_cls=dict(
                 type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
-            loss_bbox=dict(type='IoULoss', loss_weight=10.0)),
+            loss_bbox=dict(type='GIoULoss', loss_weight=10.0)),
         dict(
             type='ConvFCBBoxHead',
             num_shared_convs=4,
@@ -60,7 +64,7 @@ model = dict(
             norm_cfg=dict(type='BN', requires_grad=True),
             loss_cls=dict(
                 type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
-            loss_bbox=dict(type='IoULoss', loss_weight=10.0)),
+            loss_bbox=dict(type='GIoULoss', loss_weight=10.0)),
         dict(
             type='ConvFCBBoxHead',
             num_shared_convs=4,
@@ -79,7 +83,7 @@ model = dict(
             norm_cfg=dict(type='BN', requires_grad=True),
             loss_cls=dict(
                 type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
-            loss_bbox=dict(type='IoULoss', loss_weight=10.0))
+            loss_bbox=dict(type='GIoULoss', loss_weight=10.0))
     ]))
 
 img_norm_cfg = dict(
