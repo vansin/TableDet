@@ -156,7 +156,7 @@ evaluation = dict(
     # or equal to ‘max_epochs - num_last_epochs’.
     interval=interval,
     dynamic_intervals=[(max_epochs - num_last_epochs, 1)],
-    metric='bbox')
+    metric='mAP')
 log_config = dict(interval=50)
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
