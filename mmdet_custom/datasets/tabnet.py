@@ -412,25 +412,25 @@ class TableDataset(CustomDataset):
                 eval_results[f'MaxprecisionF{int(iou_thr * 100):02d}'] = round(precision_in_max_f1_score, 3)
 
 
-                eval_detail_result = dict()
+                # eval_detail_result = dict()
 
-                eval_detail_result['detail'] = eval_detail
-                eval_detail_result['ap'] = eval_detail[0]['ap']
-                eval_detail_result['num_gts'] = eval_detail[0]['num_gts']
-                eval_detail_result['num_dets'] = eval_detail[0]['num_dets']
+                # eval_detail_result['detail'] = eval_detail
+                # eval_detail_result['ap'] = eval_detail[0]['ap']
+                # eval_detail_result['num_gts'] = eval_detail[0]['num_gts']
+                # eval_detail_result['num_dets'] = eval_detail[0]['num_dets']
 
-                if eval_detail_result['num_dets'] != 0:
-                    eval_detail_result['recall'] = eval_detail[0]['recall'][-1]
-                    eval_detail_result['precision'] = eval_detail[0]['precision'][-1]
-                    eval_detail_result['f1_score'] = 2 * \
-                        eval_detail_result['recall']*eval_detail_result['precision'] / \
-                        (eval_detail_result['recall'] +
-                        eval_detail_result['precision'])
-                else:
-                    eval_detail_result['recall'] = 0
-                    eval_detail_result['precision'] = 0
-                    eval_detail_result['f1_score'] = 0
-                eval_detail_results[iou_thr] = eval_detail_result
+                # if eval_detail_result['num_dets'] != 0:
+                #     eval_detail_result['recall'] = eval_detail[0]['recall'][-1]
+                #     eval_detail_result['precision'] = eval_detail[0]['precision'][-1]
+                #     eval_detail_result['f1_score'] = 2 * \
+                #         eval_detail_result['recall']*eval_detail_result['precision'] / \
+                #         (eval_detail_result['recall'] +
+                #         eval_detail_result['precision'])
+                # else:
+                #     eval_detail_result['recall'] = 0
+                #     eval_detail_result['precision'] = 0
+                #     eval_detail_result['f1_score'] = 0
+                # eval_detail_results[iou_thr] = eval_detail_result
 
                 eval_results[f'AP{int(iou_thr * 100):02d}'] = round(mean_ap, 3)
 
