@@ -149,7 +149,7 @@ custom_hooks = [
 ]
 checkpoint_config = dict(interval=interval)
 evaluation = dict(
-    save_best='auto',
+    # save_best='auto',
     # The evaluation interval is 'interval' when running epoch is
     # less than ‘max_epochs - num_last_epochs’.
     # The evaluation interval is 1 when running epoch is greater than
