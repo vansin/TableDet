@@ -407,9 +407,9 @@ class TableDataset(CustomDataset):
                     recall_in_max_f1_score = recalls[max_index]
                     precision_in_max_f1_score = precisions[max_index]
                     max_f1_score = f1_scores[max_index]
-                eval_results[f'MaxF1Score{int(iou_thr * 100):02d}'] = round(max_f1_score, 3)
-                eval_results[f'MaxRecallF{int(iou_thr * 100):02d}'] = round(recall_in_max_f1_score, 3)
-                eval_results[f'MaxprecisionF{int(iou_thr * 100):02d}'] = round(precision_in_max_f1_score, 3)
+                eval_results[f'MaxF1Score{int(iou_thr * 100):02d}'] = round(max_f1_score, 5)
+                eval_results[f'MaxRecallF{int(iou_thr * 100):02d}'] = round(recall_in_max_f1_score, 5)
+                eval_results[f'MaxprecisionF{int(iou_thr * 100):02d}'] = round(precision_in_max_f1_score, 5)
 
 
                 # eval_detail_result = dict()
