@@ -1,11 +1,14 @@
 checkpoint_config = dict(interval=1)
 # yapf:disable
 log_config = dict(
-    interval=50,
+    interval=5,
     hooks=[
         dict(type='TextLoggerHook'),
         # dict(type='TensorboardLoggerHook')
-        dict(type='WandbLoggerHook'),
+        dict(
+            type='WandbLoggerHook',
+            interval=5,
+            ),
     ])
 # yapf:enable
 custom_hooks = [dict(type='NumClassCheckHook')]
