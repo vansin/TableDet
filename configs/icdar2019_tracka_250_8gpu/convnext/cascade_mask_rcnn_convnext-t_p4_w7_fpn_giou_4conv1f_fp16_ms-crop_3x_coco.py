@@ -142,8 +142,8 @@ optimizer = dict(
         'num_layers': 6
     })
 
-lr_config = dict(warmup_iters=1000, step=[27, 33])
-runner = dict(max_epochs=36)
+lr_config = dict(warmup_iters=50, step=[47, 63])
+runner = dict(max_epochs=72)
 
 # you need to set mode='dynamic' if you are using pytorch<=1.5.0
 fp16 = dict(loss_scale=dict(init_scale=512))
