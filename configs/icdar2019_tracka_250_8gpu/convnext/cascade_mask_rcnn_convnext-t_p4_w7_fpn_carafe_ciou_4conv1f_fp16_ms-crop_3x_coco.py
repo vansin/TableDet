@@ -56,7 +56,7 @@ model = dict(
             norm_cfg=dict(type='SyncBN', requires_grad=True),
             loss_cls=dict(
                 type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
-            loss_bbox=dict(type='GIoULoss', loss_weight=10.0)),
+            loss_bbox=dict(type='CIoULoss', loss_weight=10.0)),
         dict(
             type='ConvFCBBoxHead',
             num_shared_convs=4,
@@ -75,7 +75,7 @@ model = dict(
             norm_cfg=dict(type='SyncBN', requires_grad=True),
             loss_cls=dict(
                 type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
-            loss_bbox=dict(type='GIoULoss', loss_weight=10.0)),
+            loss_bbox=dict(type='CIoULoss', loss_weight=10.0)),
         dict(
             type='ConvFCBBoxHead',
             num_shared_convs=4,
@@ -94,7 +94,7 @@ model = dict(
             norm_cfg=dict(type='SyncBN', requires_grad=True),
             loss_cls=dict(
                 type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
-            loss_bbox=dict(type='GIoULoss', loss_weight=10.0))
+            loss_bbox=dict(type='CIoULoss', loss_weight=10.0))
     ]))
 
 img_norm_cfg = dict(
