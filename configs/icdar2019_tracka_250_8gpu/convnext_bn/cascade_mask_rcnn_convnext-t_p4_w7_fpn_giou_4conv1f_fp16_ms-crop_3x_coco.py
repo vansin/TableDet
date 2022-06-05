@@ -143,7 +143,7 @@ optimizer = dict(
     })
 
 lr_config = dict(warmup_iters=1000, step=[27, 33])
-runner = dict(max_epochs=36)
+runner = dict(max_epochs=72)
 
 # you need to set mode='dynamic' if you are using pytorch<=1.5.0
 fp16 = dict(loss_scale=dict(init_scale=512))
