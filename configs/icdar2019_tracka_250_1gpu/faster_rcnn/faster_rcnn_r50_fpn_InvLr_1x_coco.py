@@ -1,0 +1,10 @@
+_base_ = [
+    '../_base_/models/faster_rcnn_r50_fpn.py',
+    '../_base_/datasets/coco_detection.py',
+    '../_base_/schedules/schedule_CosineAnnealing_1x.py', '../_base_/default_runtime.py'
+]
+
+
+lr_config = dict(
+    policy='schedule_InvLr_1x',
+    min_lr=0.001)
