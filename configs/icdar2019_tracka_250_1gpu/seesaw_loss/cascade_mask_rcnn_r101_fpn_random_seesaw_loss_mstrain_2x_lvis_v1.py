@@ -16,7 +16,7 @@ model = dict(
                 in_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=1203,
+                num_classes=1,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -27,7 +27,7 @@ model = dict(
                     type='SeesawLoss',
                     p=0.8,
                     q=2.0,
-                    num_classes=1203,
+                    num_classes=1,
                     loss_weight=1.0),
                 loss_bbox=dict(type='SmoothL1Loss', beta=1.0,
                                loss_weight=1.0)),
@@ -36,7 +36,7 @@ model = dict(
                 in_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=1203,
+                num_classes=1,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -47,7 +47,7 @@ model = dict(
                     type='SeesawLoss',
                     p=0.8,
                     q=2.0,
-                    num_classes=1203,
+                    num_classes=1,
                     loss_weight=1.0),
                 loss_bbox=dict(type='SmoothL1Loss', beta=1.0,
                                loss_weight=1.0)),
@@ -56,7 +56,7 @@ model = dict(
                 in_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=1203,
+                num_classes=1,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -67,11 +67,11 @@ model = dict(
                     type='SeesawLoss',
                     p=0.8,
                     q=2.0,
-                    num_classes=1203,
+                    num_classes=1,
                     loss_weight=1.0),
                 loss_bbox=dict(type='SmoothL1Loss', beta=1.0, loss_weight=1.0))
         ],
-        mask_head=dict(num_classes=1203)),
+        mask_head=dict(num_classes=1)),
     test_cfg=dict(
         rcnn=dict(
             score_thr=0.0001,
@@ -109,24 +109,24 @@ test_pipeline = [
             dict(type='Collect', keys=['img']),
         ])
 ]
-dataset_type = 'LVISV1Dataset'
-data_root = 'data/lvis_v1/'
-data = dict(
-    samples_per_gpu=2,
-    workers_per_gpu=2,
-    train=dict(
-        type=dataset_type,
-        ann_file=data_root + 'annotations/lvis_v1_train.json',
-        img_prefix=data_root,
-        pipeline=train_pipeline),
-    val=dict(
-        type=dataset_type,
-        ann_file=data_root + 'annotations/lvis_v1_val.json',
-        img_prefix=data_root,
-        pipeline=test_pipeline),
-    test=dict(
-        type=dataset_type,
-        ann_file=data_root + 'annotations/lvis_v1_val.json',
-        img_prefix=data_root,
-        pipeline=test_pipeline))
-evaluation = dict(interval=24, metric=['bbox', 'segm'])
+# dataset_type = 'LVISV1Dataset'
+# data_root = 'data/lvis_v1/'
+# data = dict(
+#     samples_per_gpu=2,
+#     workers_per_gpu=2,
+#     train=dict(
+#         type=dataset_type,
+#         ann_file=data_root + 'annotations/lvis_v1_train.json',
+#         img_prefix=data_root,
+#         pipeline=train_pipeline),
+#     val=dict(
+#         type=dataset_type,
+#         ann_file=data_root + 'annotations/lvis_v1_val.json',
+#         img_prefix=data_root,
+#         pipeline=test_pipeline),
+#     test=dict(
+#         type=dataset_type,
+#         ann_file=data_root + 'annotations/lvis_v1_val.json',
+#         img_prefix=data_root,
+#         pipeline=test_pipeline))
+# evaluation = dict(interval=24, metric=['bbox', 'segm'])
