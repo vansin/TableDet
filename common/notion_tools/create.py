@@ -1,3 +1,6 @@
+
+
+
 import os
 
 from notion_client import Client
@@ -12,9 +15,6 @@ while NOTION_TOKEN == "":
 # Initialize the client
 notion = Client(auth=NOTION_TOKEN)
 
-
-datasets_notion = notion.databases.query(
-    database_id='c044f0e41db8413aa12f420fb1dd6153') 
 
 def manual_inputs(parent_id="", db_name="") -> tuple:
     """
@@ -91,4 +91,4 @@ if __name__ == "__main__":
 
     parent_id, db_name = manual_inputs()
     newdb = create_database(parent_id=parent_id, db_name=db_name)
-    print(f"\n\nDatabase {db_name} created at {newdb['url']}\n")
+    print(f"\n\nDatabase {db_name} created at {newdb['url']}\n")
