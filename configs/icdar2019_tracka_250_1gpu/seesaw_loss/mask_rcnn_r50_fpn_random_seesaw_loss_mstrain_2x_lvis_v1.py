@@ -72,4 +72,4 @@ data = dict(
         ann_file=data_root + 'annotations/lvis_v1_val.json',
         img_prefix=data_root,
         pipeline=test_pipeline))
-evaluation = dict(interval=24, metric=['bbox', 'segm'])
+# evaluation = dict(interval=24, metric=['bbox', 'segm'])
