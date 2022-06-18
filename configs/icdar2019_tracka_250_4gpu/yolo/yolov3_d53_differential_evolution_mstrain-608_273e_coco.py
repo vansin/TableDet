@@ -128,3 +128,5 @@ evaluation = dict(interval=1, metric=['bbox'])
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (8 GPUs) x (8 samples per GPU)
 auto_scale_lr = dict(base_batch_size=64)
+
+checkpoint_config=dict(interval=100)
