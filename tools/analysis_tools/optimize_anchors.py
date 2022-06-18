@@ -31,6 +31,7 @@ from mmdet.core import bbox_cxcywh_to_xyxy, bbox_overlaps, bbox_xyxy_to_cxcywh
 from mmdet.datasets import build_dataset
 from mmdet.utils import get_root_logger, update_data_root
 
+import custom
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Optimize anchor parameters.')
