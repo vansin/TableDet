@@ -124,9 +124,15 @@ lr_config = dict(
     step=[218, 246])
 # runtime settings
 runner = dict(type='EpochBasedRunner', max_epochs=273)
-evaluation = dict(interval=1, metric=['bbox'])
+evaluation = dict(interval=10, metric='mAP')
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # USER SHOULD NOT CHANGE ITS VALUES.
 # base_batch_size = (8 GPUs) x (8 samples per GPU)
 auto_scale_lr = dict(base_batch_size=64)
+
+
+
+checkpoint_config=dict(interval=100)
+
+log_config = dict(interval=5)
