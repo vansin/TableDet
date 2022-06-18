@@ -130,3 +130,5 @@ evaluation = dict(interval=10, metric='mAP')
 auto_scale_lr = dict(base_batch_size=64)
 
 checkpoint_config=dict(interval=100)
+
+log_config = dict(interval=5)
