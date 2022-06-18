@@ -1,6 +1,6 @@
 _base_ = [
     '../_base_/models/mask_rcnn_r50_fpn.py',
-    '../_base_/datasets/lvis_v1_instance.py',
+    '../_base_/datasets/coco_instance.py',
     '../_base_/schedules/schedule_2x.py', '../_base_/default_runtime.py'
 ]
 model = dict(
@@ -37,5 +37,5 @@ train_pipeline = [
     dict(type='DefaultFormatBundle'),
     dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels', 'gt_masks']),
 ]
-data = dict(train=dict(dataset=dict(pipeline=train_pipeline)))
-evaluation = dict(interval=12, metric=['bbox', 'segm'])
+# data = dict(train=dict(dataset=dict(pipeline=train_pipeline)))
+# evaluation = dict(interval=12, metric=['bbox', 'segm'])
