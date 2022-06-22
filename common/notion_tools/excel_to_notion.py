@@ -96,8 +96,9 @@ def create_database(parent_id: str, db_name: str) -> dict:
 
 database_id = 'c029ed80d2754bfb960a6ed951f04e00'
 
-def re_data(database_id='c029ed80d2754bfb960a6ed951f04e00', title='', Authors=''): 
-    
+
+def re_data(database_id='c029ed80d2754bfb960a6ed951f04e00', title='', Authors=''):
+
     data = dict(
         parent={'database_id': database_id},
         properties={
@@ -135,50 +136,71 @@ def re_data(database_id='c029ed80d2754bfb960a6ed951f04e00', title='', Authors=''
     return data
 
 
+def axiv_data(page_id, Abs_url):
+
+    data = dict(
+        page_id=page_id,
+        properties={
+            "Abs_url": {
+                "url": Abs_url
+            }
+        }
+    )
+
+    return data
+
+
 if __name__ == "__main__":
 
     # parent_id, db_name = manual_inputs()
     # newdb = create_database(parent_id=parent_id, db_name=db_name)
     # print(f"\n\nDatabase {db_name} created at {newdb['url']}\n")
 
-
-
-
-
     df = pd.read_excel('/project/acceptedpapers.xlsx')
 
-
     records = df.to_dict(orient='records')
-    for i,record in enumerate(records):
+    for i, record in enumerate(records):
 
         print(i)
 
         search = arxiv.Search(
-        query  = record['Paper Title'],
-        max_results = 1
+            query=record['Paper Title'],
+            max_results=1
         )
+
+        pdf_url = None
+        entry_id = None
 
         for result in search.results():
             print(result.title)
-            result.download_pdf(dirpath='/home/elaine/Documents/cvpr2022')
-
+            print(result.pdf_url)
+            print(result.entry_id)
+            Abs_url = result.entry_id
+            # result.download_pdf(dirpath='/home/elaine/Documents/cvpr2022')
 
         q_data = {
-                    "filter": {
-                        "property": "Paper Title",
-                        "rich_text": {
+            "filter": {
+                "property": "Paper Title",
+                "rich_text": {
                             "contains": record["Paper Title"]
-                        }
-                    }
                 }
-        
+            }
+        }
+
         q = notion.databases.query(database_id, **q_data)
-        if len(q['results'])<1:
-            data = re_data(title=record['Paper Title'], Authors=record['Authors'])
+        if len(q['results']) < 1:
+            data = re_data(title=record['Paper Title'],
+                           Authors=record['Authors'])
             r_json = notion.pages.create(**data)
-            record[id]=r_json['id']
+            record[id] = r_json['id']
+        else:
+            record['id'] = q['results'][0]['id']
 
+        if Abs_url:
 
+            data = axiv_data(record['id'], Abs_url)
+            notion.pages.update(**data)
+            #
 
     print(records)
 
@@ -188,7 +210,6 @@ if __name__ == "__main__":
 
 
 # 把excel的数据写到notion
-
 
 
 # 给各个论文打标签
