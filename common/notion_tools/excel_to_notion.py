@@ -3,12 +3,12 @@ from notion_client import Client
 import pandas as pd
 
 # 从excel中读取数据
-
+from common.notion_tools.search_word_in_pdf import search_word_in_pdf
 
 import os
 
 import arxiv
-
+import re
 
 NOTION_TOKEN = os.getenv("NOTION_TOKEN", "")
 
@@ -161,7 +161,7 @@ if __name__ == "__main__":
     records = df.to_dict(orient='records')
     for i, record in enumerate(records):
 
-        print(i)
+        print('progress',i)
 
         search = arxiv.Search(
             query=record['Paper Title'],
@@ -176,7 +176,25 @@ if __name__ == "__main__":
             print(result.pdf_url)
             print(result.entry_id)
             Abs_url = result.entry_id
-            # result.download_pdf(dirpath='/home/elaine/Documents/cvpr2022')
+
+
+
+            get_short_id = result.entry_id.split('arxiv.org/abs/')[-1]
+            nonempty_title = result.title if result.title else "UNTITLED"
+            # Remove disallowed characters.
+            clean_title = '_'.join(re.findall(r'\w+', nonempty_title))
+            filename = "{}.{}.{}".format(get_short_id, clean_title, 'pdf')
+
+            prefix = '/home/elaine/Documents/cvpr2022'
+
+            if not os.path.exists(prefix+'/'+filename):
+
+                result.download_pdf(dirpath=prefix, filename=filename)
+            else:
+                print('已存在')
+
+            print('score:',search_word_in_pdf(prefix+'/'+filename))
+
 
         q_data = {
             "filter": {
@@ -192,7 +210,7 @@ if __name__ == "__main__":
             data = re_data(title=record['Paper Title'],
                            Authors=record['Authors'])
             r_json = notion.pages.create(**data)
-            record[id] = r_json['id']
+            record['id'] = r_json['id']
         else:
             record['id'] = q['results'][0]['id']
 
