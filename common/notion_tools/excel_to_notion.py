@@ -161,7 +161,10 @@ if __name__ == "__main__":
     records = df.to_dict(orient='records')
     for i, record in enumerate(records):
 
+
         print('progress',i)
+        if i<63:
+            continue
 
         search = arxiv.Search(
             query=record['Paper Title'],
