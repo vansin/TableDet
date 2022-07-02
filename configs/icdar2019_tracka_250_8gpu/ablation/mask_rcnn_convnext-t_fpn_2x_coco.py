@@ -73,20 +73,20 @@ model = dict(
 # ]
 # data = dict(train=dict(pipeline=train_pipeline), persistent_workers=True)
 
-# optimizer = dict(
-#     _delete_=True,
-#     constructor='LearningRateDecayOptimizerConstructor',
-#     type='AdamW',
-#     lr=0.0002,
-#     betas=(0.9, 0.999),
-#     weight_decay=0.05,
-#     paramwise_cfg={
-#         'decay_rate': 0.7,
-#         'decay_type': 'layer_wise',
-#         'num_layers': 6
-#     })
+optimizer = dict(
+    _delete_=True,
+    constructor='LearningRateDecayOptimizerConstructor',
+    type='AdamW',
+    lr=0.0002,
+    betas=(0.9, 0.999),
+    weight_decay=0.05,
+    paramwise_cfg={
+        'decay_rate': 0.7,
+        'decay_type': 'layer_wise',
+        'num_layers': 6
+    })
 
-# lr_config = dict(warmup_iters=50, step=[47, 63])
+lr_config = dict(warmup_iters=50, step=[47, 63])
 # runner = dict(max_epochs=72)
 
 # you need to set mode='dynamic' if you are using pytorch<=1.5.0
