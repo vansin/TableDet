@@ -125,7 +125,7 @@ optimizer_config = dict(grad_clip=None)
 lr_config = dict(
     policy='step',
     warmup='linear',
-    warmup_iters=3665,
+    warmup_iters=300,
     warmup_ratio=1.0 / 80,
     step=[17, 23])
 runner = dict(type='EpochBasedRunner', max_epochs=25)
