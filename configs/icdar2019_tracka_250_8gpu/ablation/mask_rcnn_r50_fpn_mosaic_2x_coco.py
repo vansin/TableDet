@@ -37,10 +37,3 @@ train_pipeline = [
 train_dataset = dict(
     type='MultiImageMixDataset',
     pipeline=train_pipeline)
-
-
-log_config = dict(
-    interval=5,
-    hooks=[
-        dict(type='TextLoggerHook'),
-    ])
