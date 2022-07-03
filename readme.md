@@ -52,3 +52,5 @@ pip install -v -e .
 ```python
 python common/cam/vis_cam.py demo/demo.png  work_dirs/icdar2019_tracka_250_1gpu/mask_rcnn mask_rcnn_r50_fpn_2x_coco/mask_rcnn_r50_fpn_2x_coco.py work_dirs/icdar2019_tracka_250_1gpu/mask_rcnn mask_rcnn_r50_fpn_2x_coco/epoch_24.pth --method ablationcam
 ```
+
+## 
