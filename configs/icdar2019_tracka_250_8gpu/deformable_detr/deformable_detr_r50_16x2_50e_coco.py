@@ -168,8 +168,8 @@ optimizer = dict(
         }))
 optimizer_config = dict(grad_clip=dict(max_norm=0.1, norm_type=2))
 # learning policy
-lr_config = dict(policy='step', step=[40])
-runner = dict(type='EpochBasedRunner', max_epochs=50)
+lr_config = dict(policy='step', step=[80])
+runner = dict(type='EpochBasedRunner', max_epochs=100)
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR,
 # USER SHOULD NOT CHANGE ITS VALUES.
