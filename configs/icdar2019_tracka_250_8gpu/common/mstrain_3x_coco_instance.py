@@ -59,7 +59,8 @@ data = dict(
         ann_file=data_root + 'test.json',
         img_prefix=data_root + 'test_img/',
         pipeline=test_pipeline))
-evaluation = dict(interval=1, metric=['bbox', 'segm'])
+evaluation = dict(interval=1, metric=['mAP'])
+# evaluation = dict(interval=1, metric=['bbox', 'segm'])
 
 # optimizer
 optimizer = dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0001)
