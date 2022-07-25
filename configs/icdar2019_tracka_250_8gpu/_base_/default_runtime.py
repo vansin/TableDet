@@ -27,8 +27,8 @@ mp_start_method = 'fork'
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically
 #       or not by default.
-#   - `base_batch_size` = (8 GPUs) x (2 samples per GPU).
-auto_scale_lr = dict(enable=False, base_batch_size=16)
+#   - `base_batch_size` = (1 GPUs) x (2 samples per GPU).
+auto_scale_lr = dict(enable=False, base_batch_size=2)
 
 custom_imports = dict(
     imports=['custom'],
