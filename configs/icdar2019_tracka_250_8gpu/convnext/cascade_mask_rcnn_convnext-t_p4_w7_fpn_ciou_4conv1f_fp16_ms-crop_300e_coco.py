@@ -21,11 +21,7 @@ model = dict(
         init_cfg=dict(
             type='Pretrained', checkpoint=checkpoint_file,
             prefix='backbone.')),
-    neck=dict(
-        type='PAFPN',
-        in_channels=[96, 192, 384, 768],
-        out_channels=256,
-        num_outs=5),
+    neck=dict(in_channels=[96, 192, 384, 768]),
     roi_head=dict(bbox_head=[
         dict(
             type='ConvFCBBoxHead',
