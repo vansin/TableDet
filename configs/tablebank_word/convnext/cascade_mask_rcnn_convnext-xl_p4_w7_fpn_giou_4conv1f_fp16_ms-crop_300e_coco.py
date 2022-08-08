@@ -7,13 +7,13 @@ _base_ = [
 # please install mmcls>=0.22.0
 # import mmcls.models to trigger register_module in mmcls
 custom_imports = dict(imports=['mmcls.models', 'custom'], allow_failed_imports=False)
-checkpoint_file = 'https://download.openmmlab.com/mmclassification/v0/convnext/convnext-large_3rdparty_in21k_20220124-41b5a79f.pth'  # noqa
+checkpoint_file = 'https://download.openmmlab.com/mmclassification/v0/convnext/convnext-xlarge_3rdparty_in21k_20220124-f909bad7.pth'  # noqa
 
 model = dict(
     backbone=dict(
         _delete_=True,
         type='mmcls.ConvNeXt',
-        arch='large',
+        arch='base',
         out_indices=[0, 1, 2, 3],
         drop_path_rate=0.4,
         layer_scale_init_value=1.0,
@@ -21,7 +21,7 @@ model = dict(
         init_cfg=dict(
             type='Pretrained', checkpoint=checkpoint_file,
             prefix='backbone.')),
-    neck=dict(in_channels=[192, 384, 768, 1536]),
+    neck=dict(in_channels=[256, 512, 1024, 2048]),
     roi_head=dict(bbox_head=[
         dict(
             type='ConvFCBBoxHead',
