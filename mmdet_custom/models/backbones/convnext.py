@@ -48,10 +48,7 @@ class BaseBackbone(BaseModule, metaclass=ABCMeta):
 
 
 from mmdet.models.builder import BACKBONES
-# from mmcls.models.backbones.base_backbone import BaseBackbone
 
-
-# @NORM_LAYERS.register_module('LN2d')
 class LayerNorm2d(nn.LayerNorm):
     """LayerNorm on channels for 2d images.
 
@@ -118,7 +115,7 @@ class ConvNeXtBlock(BaseModule):
         self.depthwise_conv = nn.Conv2d(
             in_channels,
             in_channels,
-            kernel_size=7,
+            kernel_size=11,
             padding=3,
             groups=in_channels)
 
