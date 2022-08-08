@@ -11,11 +11,47 @@ from mmcv.cnn.bricks import (NORM_LAYERS, DropPath, build_activation_layer,
 from mmcv.runner import BaseModule
 from mmcv.runner.base_module import ModuleList, Sequential
 
-from mmcls.models.builder import BACKBONES
-from mmcls.models.backbones.base_backbone import BaseBackbone
+
+# Copyright (c) OpenMMLab. All rights reserved.
+from abc import ABCMeta, abstractmethod
+
+from mmcv.runner import BaseModule
+
+class BaseBackbone(BaseModule, metaclass=ABCMeta):
+    """Base backbone.
+
+    This class defines the basic functions of a backbone. Any backbone that
+    inherits this class should at least define its own `forward` function.
+    """
+
+    def __init__(self, init_cfg=None):
+        super(BaseBackbone, self).__init__(init_cfg)
+
+    @abstractmethod
+    def forward(self, x):
+        """Forward computation.
+
+        Args:
+            x (tensor | tuple[tensor]): x could be a Torch.tensor or a tuple of
+                Torch.tensor, containing input data for forward computation.
+        """
+        pass
+
+    def train(self, mode=True):
+        """Set module status before forward computation.
+
+        Args:
+            mode (bool): Whether it is train_mode or test_mode
+        """
+        super(BaseBackbone, self).train(mode)
 
 
-@NORM_LAYERS.register_module('LN2d')
+
+from mmdet.models.builder import BACKBONES
+# from mmcls.models.backbones.base_backbone import BaseBackbone
+
+
+# @NORM_LAYERS.register_module('LN2d')
 class LayerNorm2d(nn.LayerNorm):
     """LayerNorm on channels for 2d images.
 
@@ -329,5 +365,5 @@ class ConvNeXtV1(BaseBackbone):
                 param.requires_grad = False
 
     def train(self, mode=True):
-        super(ConvNeXt, self).train(mode)
+        super(ConvNeXtV1, self).train(mode)
         self._freeze_stages()
