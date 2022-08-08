@@ -115,7 +115,7 @@ class ConvNeXtBlock(BaseModule):
         self.depthwise_conv = nn.Conv2d(
             in_channels,
             in_channels,
-            kernel_size=11,
+            kernel_size=7,
             padding=3,
             groups=in_channels)
 
