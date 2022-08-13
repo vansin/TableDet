@@ -9,6 +9,10 @@ evaluation = dict(interval=2)
 # Set checkpoint interval
 checkpoint_config = dict(interval=4)
 
+data = dict(
+    samples_per_gpu=1,
+    workers_per_gpu=1)
+
 # yapf:disable
 log_config = dict(
     interval=50,
