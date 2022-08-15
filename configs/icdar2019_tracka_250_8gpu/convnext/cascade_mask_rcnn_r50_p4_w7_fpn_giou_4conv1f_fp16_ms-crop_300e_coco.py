@@ -1,7 +1,7 @@
 _base_ = [
     '../_base_/models/cascade_mask_rcnn_r50_fpn.py',
     '../_base_/datasets/coco_instance.py',
-    '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
+    '../_base_/schedules/schedule_300e.py', '../_base_/default_runtime.py'
 ]
 
 # please install mmcls>=0.22.0
@@ -143,7 +143,7 @@ data = dict(train=dict(pipeline=train_pipeline), persistent_workers=True)
 #     })
 
 # lr_config = dict(warmup_iters=50, step=[200, 250])
-runner = dict(max_epochs=300)
+# runner = dict(max_epochs=300)
 
 # you need to set mode='dynamic' if you are using pytorch<=1.5.0
 fp16 = dict(loss_scale=dict(init_scale=512))
