@@ -134,7 +134,7 @@ annotations = data['annotations']
 
 i = 0
 
-ratio = 0.1
+ratio = 0.05
 
 for anno in annotations:
 
@@ -151,16 +151,14 @@ for anno in annotations:
 
     x,y,w,h = anno['bbox']
 
-    x = int(x-0.5*ratio*w)
-    y = int(y-0.5*ratio*h)
+    x0 = int(x-0.5*ratio*w)
+    y0 = int(y-0.5*ratio*h)
 
-    x1 = x+w*ratio
-    y1 = y+h*ratio
-    x1 = int(x1)
-    y1 = int(y1)
+    x1 = int(x+w*ratio*0.5)
+    y1 = int(y+h*ratio*0.5)
 
-    before[y:y+h, x:x+w] = 255
-    before[y1:y1+int(h*(1+ratio)), x1:x1+int(w*(1+ratio))] = 0
+    before[y0:y0+int(h*(1+ratio)), x0:x0+int(w*(1+ratio))] = 255
+    before[y1:y1+int(h*(1-ratio)), x1:x1+int(w*(1-ratio))] = 0
 
 
 
