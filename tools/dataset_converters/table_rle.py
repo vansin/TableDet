@@ -134,6 +134,8 @@ annotations = data['annotations']
 
 i = 0
 
+ratio = 0.1
+
 for anno in annotations:
 
 
@@ -149,15 +151,16 @@ for anno in annotations:
 
     x,y,w,h = anno['bbox']
 
-    before[y:y+h, x:x+w] = 255
+    x = int(x-0.5*ratio*w)
+    y = int(y-0.5*ratio*h)
 
-    x1 = x+w/10
-    y1 = y+h/10
-
+    x1 = x+w*ratio
+    y1 = y+h*ratio
     x1 = int(x1)
     y1 = int(y1)
 
-    before[y1:y1+int(h*0.8), x1:x1+int(w*0.8)] = 0
+    before[y:y+h, x:x+w] = 255
+    before[y1:y1+int(h*(1+ratio)), x1:x1+int(w*(1+ratio))] = 0
 
 
 
@@ -184,7 +187,7 @@ for anno in annotations:
 
 
 mmcv.dump(data,
-    'data/icdar2019_tracka_modern/train1.json')
+    'data/icdar2019_tracka_modern/train_m.json')
 print(annotations)
 
 
