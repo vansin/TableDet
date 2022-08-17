@@ -30,14 +30,17 @@ def binary_mask_to_rle(binary_mask):
 # in_json = 'data/icdar2019_tracka_modern/train.json'
 # out_json = 'data/icdar2019_tracka_modern/train_m.json'
 
+in_json = 'data/icdar2019_tracka_modern/test.json'
+out_json = 'data/icdar2019_tracka_modern/test_m.json'
+
 # in_json = 'data/table/annotations/both_train.json'
 # out_json = 'data/table/annotations/both_train_m.json'
 
 # in_json = 'data/table/annotations/latex_train.json'
 # out_json = 'data/table/annotations/latex_train_m.json'
 
-in_json = 'data/table/annotations/word_train.json'
-out_json = 'data/table/annotations/word_train_m.json'
+# in_json = 'data/table/annotations/word_train.json'
+# out_json = 'data/table/annotations/word_train_m.json'
 
 
 
