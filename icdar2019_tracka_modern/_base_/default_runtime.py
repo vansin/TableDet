@@ -1,5 +1,7 @@
 default_scope = 'mmdet'
 
+custom_imports = dict(imports=['mmdet_custom.evaluation'], allow_failed_imports=False)
+
 default_hooks = dict(
     timer=dict(type='IterTimerHook'),
     logger=dict(type='LoggerHook', interval=5),
