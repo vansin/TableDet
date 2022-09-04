@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = 'data/balloon/'
+data_root = 'data/icdar2019_tracka_modern/'
 
 # file_client_args = dict(
 #     backend='petrel',
@@ -10,7 +10,7 @@ data_root = 'data/balloon/'
 #     }))
 
 metainfo = {
-    'CLASSES': ('balloon', ),
+    'CLASSES': ('table', ),
     'PALETTE': [
         (220, 20, 60),
     ]
@@ -37,8 +37,8 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=1,
-    num_workers=2,
+    batch_size=2,
+    num_workers=4,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     batch_sampler=dict(type='AspectRatioBatchSampler'),
@@ -47,7 +47,7 @@ train_dataloader = dict(
         data_root=data_root,
         metainfo=metainfo,
         ann_file='train.json',
-        data_prefix=dict(img='train/'),
+        data_prefix=dict(img='train_img/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=train_pipeline))
 val_dataloader = dict(
@@ -60,8 +60,8 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         metainfo=metainfo,
-        ann_file='val.json',
-        data_prefix=dict(img='val/'),
+        ann_file='test.json',
+        data_prefix=dict(img='test_img/'),
         test_mode=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
@@ -74,11 +74,11 @@ test_dataloader = val_dataloader
 
 val_evaluator = dict(
     type='F1Metric',
-    ann_file=data_root + 'val.json',
+    ann_file=data_root + 'test.json',
     metric='mAP',
     format_only=False)
-
 test_evaluator = val_evaluator
+
 
 # inference on test dataset and
 # format the output results for submission.
