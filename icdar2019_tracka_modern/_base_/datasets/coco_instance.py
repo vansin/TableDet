@@ -66,11 +66,18 @@ val_dataloader = dict(
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
+# val_evaluator = dict(
+#     type='CocoMetric',
+#     ann_file=data_root + 'val.json',
+#     metric=['bbox', 'segm'],
+#     format_only=False)
+
 val_evaluator = dict(
-    type='CocoMetric',
+    type='F1Metric',
     ann_file=data_root + 'val.json',
-    metric=['bbox', 'segm'],
+    metric='mAP',
     format_only=False)
+
 test_evaluator = val_evaluator
 
 # inference on test dataset and

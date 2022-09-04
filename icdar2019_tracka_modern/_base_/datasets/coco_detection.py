@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'CocoDataset'
-data_root = 'data/balloon/'
+data_root = 'data/icdar2019_tracka_modern/'
 
 # file_client_args = dict(
 #     backend='petrel',
@@ -10,7 +10,7 @@ data_root = 'data/balloon/'
 #     }))
 
 metainfo = {
-    'CLASSES': ('balloon', ),
+    'CLASSES': ('table', ),
     'PALETTE': [
         (220, 20, 60),
     ]
@@ -47,7 +47,7 @@ train_dataloader = dict(
         data_root=data_root,
         metainfo=metainfo,
         ann_file='train.json',
-        data_prefix=dict(img='train/'),
+        data_prefix=dict(img='train_img/'),
         filter_cfg=dict(filter_empty_gt=True, min_size=32),
         pipeline=train_pipeline))
 val_dataloader = dict(
@@ -60,16 +60,18 @@ val_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         metainfo=metainfo,
-        ann_file='val.json',
-        data_prefix=dict(img='val/'),
+        ann_file='test.json',
+        data_prefix=dict(img='test_img/'),
         test_mode=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
+# custom_imports = dict(imports=['mmdet_custom.evaluation'], allow_failed_imports=False)
+
 val_evaluator = dict(
-    type='CocoMetric',
-    ann_file=data_root + 'val.json',
-    metric='bbox',
+    type='F1Metric',
+    ann_file=data_root + 'test.json',
+    metric='mAP',
     format_only=False)
 test_evaluator = val_evaluator
 

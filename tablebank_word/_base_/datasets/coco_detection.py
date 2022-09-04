@@ -66,10 +66,12 @@ val_dataloader = dict(
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
+custom_imports = dict(imports=['mmdet_custom.evaluation'], allow_failed_imports=False)
+
 val_evaluator = dict(
-    type='CocoMetric',
+    type='F1Metric',
     ann_file=data_root + 'val.json',
-    metric='bbox',
+    metric='mAP',
     format_only=False)
 test_evaluator = val_evaluator
 
