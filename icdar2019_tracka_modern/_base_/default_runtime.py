@@ -1,6 +1,6 @@
 default_scope = 'mmdet'
 
-custom_imports = dict(imports=['mmdet_custom.evaluation', 'mmdet_custom.engine'], allow_failed_imports=False)
+custom_imports = dict(imports=['mmdet_custom.evaluation', 'mmdet_custom.engine', 'mmcls.models'], allow_failed_imports=False)
 
 default_hooks = dict(
     timer=dict(type='IterTimerHook'),
