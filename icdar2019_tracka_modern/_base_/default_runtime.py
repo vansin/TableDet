@@ -1,6 +1,6 @@
 default_scope = 'mmdet'
 
-custom_imports = dict(imports=['mmdet_custom.evaluation'], allow_failed_imports=False)
+custom_imports = dict(imports=['mmdet_custom.evaluation', 'mmdet_custom.engine'], allow_failed_imports=False)
 
 default_hooks = dict(
     timer=dict(type='IterTimerHook'),
@@ -16,7 +16,7 @@ env_cfg = dict(
     dist_cfg=dict(backend='nccl'),
 )
 
-vis_backends = [dict(type='LocalVisBackend'), dict(type='WandbVisBackend')]
+vis_backends = [dict(type='LocalVisBackend'), dict(type='WandbVisBackend', init_kwargs=dict(project='mmyolo-td-tools'))]
 visualizer = dict(
     type='DetLocalVisualizer', vis_backends=vis_backends, name='visualizer')
 log_processor = dict(type='LogProcessor', window_size=50, by_epoch=True)
