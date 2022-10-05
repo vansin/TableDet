@@ -12,7 +12,7 @@ model = dict(
     roi_head=dict(bbox_head=[
         dict(
             type='SABLHead',
-            num_classes=80,
+            num_classes=1,
             cls_in_channels=256,
             reg_in_channels=256,
             roi_feat_size=7,
@@ -38,7 +38,7 @@ model = dict(
                                loss_weight=1.0)),
         dict(
             type='SABLHead',
-            num_classes=80,
+            num_classes=1,
             cls_in_channels=256,
             reg_in_channels=256,
             roi_feat_size=7,
@@ -64,7 +64,7 @@ model = dict(
                                loss_weight=1.0)),
         dict(
             type='SABLHead',
-            num_classes=80,
+            num_classes=1,
             cls_in_channels=256,
             reg_in_channels=256,
             roi_feat_size=7,

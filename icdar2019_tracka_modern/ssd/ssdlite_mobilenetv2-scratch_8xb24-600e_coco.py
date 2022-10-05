@@ -32,7 +32,7 @@ model = dict(
     bbox_head=dict(
         type='SSDHead',
         in_channels=(96, 1280, 512, 256, 256, 128),
-        num_classes=80,
+        num_classes=1,
         use_depthwise=True,
         norm_cfg=dict(type='BN', eps=0.001, momentum=0.03),
         act_cfg=dict(type='ReLU6'),

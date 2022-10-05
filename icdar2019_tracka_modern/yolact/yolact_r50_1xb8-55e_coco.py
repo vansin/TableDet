@@ -34,7 +34,7 @@ model = dict(
         upsample_cfg=dict(mode='bilinear')),
     bbox_head=dict(
         type='YOLACTHead',
-        num_classes=80,
+        num_classes=1,
         in_channels=256,
         feat_channels=256,
         anchor_generator=dict(
@@ -63,7 +63,7 @@ model = dict(
         type='YOLACTProtonet',
         in_channels=256,
         num_protos=32,
-        num_classes=80,
+        num_classes=1,
         max_masks_to_train=100,
         loss_mask_weight=6.125,
         with_seg_branch=True,
