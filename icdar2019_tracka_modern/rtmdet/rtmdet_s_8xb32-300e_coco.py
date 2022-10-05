@@ -60,5 +60,6 @@ custom_hooks = [
     dict(
         type='PipelineSwitchHook',
         switch_epoch=280,
-        switch_pipeline=train_pipeline_stage2)
+        switch_pipeline=train_pipeline_stage2),
+    dict(type='MaxValueHook')
 ]
