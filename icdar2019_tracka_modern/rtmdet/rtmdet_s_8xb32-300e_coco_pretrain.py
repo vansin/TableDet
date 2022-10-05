@@ -51,16 +51,17 @@ train_pipeline_stage2 = [
 train_dataloader = dict(dataset=dict(pipeline=train_pipeline))
 
 custom_hooks = [
-    dict(
-        type='EMAHook',
-        ema_type='ExpMomentumEMA',
-        momentum=0.0002,
-        update_buffers=True,
-        priority=49),
+    # dict(
+    #     type='EMAHook',
+    #     ema_type='ExpMomentumEMA',
+    #     momentum=0.0002,
+    #     update_buffers=True,
+    #     priority=49),
     dict(
         type='PipelineSwitchHook',
         switch_epoch=280,
-        switch_pipeline=train_pipeline_stage2)
+        switch_pipeline=train_pipeline_stage2),
+    dict(type='MaxValueHook')
 ]
 
 load_from='https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_s_8xb32-300e_coco/rtmdet_s_8xb32-300e_coco_20220905_161602-2724601d.pth'
