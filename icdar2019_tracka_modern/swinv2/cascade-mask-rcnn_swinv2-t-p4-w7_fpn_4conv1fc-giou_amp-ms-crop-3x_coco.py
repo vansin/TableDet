@@ -6,7 +6,7 @@ _base_ = [
 
 # please install mmcls>=1.0
 # import mmcls.models to trigger register_module in mmcls
-custom_imports = dict(imports=['mmcls.models', 'mmdet_custom.engine'], allow_failed_imports=False)
+# custom_imports = dict(imports=['mmcls.models', 'mmdet_custom.engine'], allow_failed_imports=False)
 checkpoint_file = 'https://download.openmmlab.com/mmclassification/v0/swin-v2/swinv2-small-w16_3rdparty_in1k-256px_20220803-b707d206.pth'  # noqa
 
 model = dict(
