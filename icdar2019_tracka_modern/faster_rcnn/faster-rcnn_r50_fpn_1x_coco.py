@@ -4,6 +4,6 @@ _base_ = [
     '../_base_/schedules/schedule_1x.py', '../_base_/default_runtime.py'
 ]
 
-custom_hooks = [
-    dict(type='MaxValueHook')
-]
+# custom_hooks = [
+#     dict(type='MaxValueHook')
+# ]
