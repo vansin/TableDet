@@ -166,6 +166,8 @@ param_scheduler = [
 default_hooks = dict(
     checkpoint=dict(
         interval=interval,
+        save_best=['coco/MaxF1Score90'],
+        rule="greater",
         max_keep_ckpts=3  # only keep latest 3 checkpoints
     ))
 custom_hooks = [
