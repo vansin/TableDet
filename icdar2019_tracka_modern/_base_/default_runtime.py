@@ -7,7 +7,7 @@ default_hooks = dict(
     logger=dict(type='LoggerHook', interval=5),
     param_scheduler=dict(type='ParamSchedulerHook'),
     checkpoint=dict(type='CheckpointHook', interval=1,save_best=['coco/MaxF1Score90'],
-        rule='greater'),
+        rule='greater', max_keep_ckpts=1,
     sampler_seed=dict(type='DistSamplerSeedHook'),
     visualization=dict(type='DetVisualizationHook'))
 
